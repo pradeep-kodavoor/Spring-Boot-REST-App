@@ -37,7 +37,8 @@ public class BookController {
 	public ResponseEntity<Void> saveBooks(@RequestBody List<Book> list) {
 		logger.info("Books Controller Invoked for saving books");
 		if (list != null) {
-			bookService.saveBooks(list);
+			logger.info("Data Persisted in DB: " + bookService.saveBooks(list).toString());
+			// throw new NullPointerException();
 		}
 		
 		return ResponseEntity.accepted().build();

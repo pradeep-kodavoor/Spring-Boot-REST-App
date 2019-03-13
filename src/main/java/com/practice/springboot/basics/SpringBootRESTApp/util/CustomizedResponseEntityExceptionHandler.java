@@ -25,7 +25,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	}
 
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<ErrorDetails> handleGenericException(BookNotFoundException e, WebRequest request) {
+	public final ResponseEntity<ErrorDetails> handleGenericException(Exception e, WebRequest request) {
 
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), e.getMessage(),
 				request.getDescription(false));

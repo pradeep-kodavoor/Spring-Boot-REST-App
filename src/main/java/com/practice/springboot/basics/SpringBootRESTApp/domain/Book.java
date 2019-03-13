@@ -9,7 +9,7 @@ public class Book {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	private String name;
 	private String author;
 
@@ -18,7 +18,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(int id, String name, String author) {
+	public Book(Long id, String name, String author) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,11 +31,11 @@ public class Book {
 		this.author = author;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

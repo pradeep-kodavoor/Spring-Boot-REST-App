@@ -40,7 +40,7 @@ public class BookControllerTest {
 	@Test
 	public void testGetBook() throws Exception {
 		
-		Mockito.when(bookService.getBookById(Mockito.anyLong())).thenReturn(new Book(1, "Effective Java", "Joshua"));
+		Mockito.when(bookService.getBookById(Mockito.anyLong())).thenReturn(new Book(1L, "Effective Java", "Joshua"));
 		
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/book/1").accept(MediaType.APPLICATION_JSON);
 
@@ -58,8 +58,8 @@ public class BookControllerTest {
 	public void testSaveBooks() throws Exception {
 
 		List<Book> list = new ArrayList<>();
-		list.add(new Book(1, "Effective JAVA", "Joshua"));
-		list.add(new Book(2, "Joshua", "Robert C Martin"));
+		list.add(new Book(1L, "Effective JAVA", "Joshua"));
+		list.add(new Book(2L, "Joshua", "Robert C Martin"));
 		
 		Mockito.when(bookService.saveBooks(Mockito.anyList())).thenReturn(list);
 		
