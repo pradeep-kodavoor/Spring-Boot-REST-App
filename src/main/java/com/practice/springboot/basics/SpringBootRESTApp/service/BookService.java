@@ -35,4 +35,10 @@ public class BookService implements IBookService {
 		logger.info("Books Service Invoked for saving books");
 		return bookRepository.saveAll(list);
 	}
+
+	@Override
+	public Book addBook(Book book) {
+		logger.info("Books Service Invoked for adding new book");
+		return bookRepository.save(book);
+	}
 }

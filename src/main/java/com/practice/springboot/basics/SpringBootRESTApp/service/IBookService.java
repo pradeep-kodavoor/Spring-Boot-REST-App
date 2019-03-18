@@ -15,4 +15,6 @@ public interface IBookService {
 
 	public List<Book> saveBooks(List<Book> list);
 
+	public Book addBook(Book book);
+
 }
