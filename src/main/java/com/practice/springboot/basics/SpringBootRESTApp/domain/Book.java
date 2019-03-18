@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.practice.springboot.basics.SpringBootRESTApp.util.AuthorName;
+
 @Entity
 public class Book {
 
@@ -13,10 +15,12 @@ public class Book {
 	@GeneratedValue
 	private Long id;
 
-	@NotNull(message = "Name cannot be null for a book")
+	@NotNull(groups = ControllerValidation.class, message = "Name cannot be null for a book")
 	@Size(min = 2, message = "Book name should have atleast 2 characters")
 	private String name;
-	@NotNull(message = "Book cannot be added without specifying the name of the author")
+
+	@NotNull(groups = ServiceValidation.class, message = "Book cannot be added without specifying the name of the author")
+	@AuthorName(groups = ServiceValidation.class, message = "You can add only books that are written by Pradeep!")
 	private String author;
 
 	public Book() {
@@ -66,4 +70,9 @@ public class Book {
 		return "Book [id=" + id + ", name=" + name + ", author=" + author + "]";
 	}
 
+	public interface ServiceValidation {
+	}
+
+	public interface ControllerValidation {
+	}
 }

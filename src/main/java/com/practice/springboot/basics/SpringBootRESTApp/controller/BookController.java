@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import com.practice.springboot.basics.SpringBootRESTApp.domain.Book;
 import com.practice.springboot.basics.SpringBootRESTApp.service.IBookService;
 
 @RestController
+@Validated
 public class BookController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -63,7 +65,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/book")
-	public ResponseEntity<Void> addBook(@Valid @RequestBody Book book) {
+	public ResponseEntity<Void> addBook(@RequestBody Book book) {
 
 		logger.info("Books Controller Invoked for adding new book");
 		Book createdBook = bookService.addBook(book);
