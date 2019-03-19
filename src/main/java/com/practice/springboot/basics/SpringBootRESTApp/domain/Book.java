@@ -13,6 +13,7 @@ public class Book {
 
 	@Id
 	@GeneratedValue
+	@NotNull(groups = UpdateBookValidation.class, message = "ID cannot be null while updating a book")
 	private Long id;
 
 	@NotNull(groups = ControllerValidation.class, message = "Name cannot be null for a book")
@@ -25,7 +26,6 @@ public class Book {
 
 	public Book() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Book(Long id, String name, String author) {
@@ -74,5 +74,9 @@ public class Book {
 	}
 
 	public interface ControllerValidation {
+	}
+
+	public interface UpdateBookValidation {
+
 	}
 }

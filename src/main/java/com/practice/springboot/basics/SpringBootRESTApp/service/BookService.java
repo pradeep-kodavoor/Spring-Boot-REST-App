@@ -8,12 +8,14 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.practice.springboot.basics.SpringBootRESTApp.dao.BookRespository;
 import com.practice.springboot.basics.SpringBootRESTApp.domain.Book;
 import com.practice.springboot.basics.SpringBootRESTApp.domain.Book.ServiceValidation;
+import com.practice.springboot.basics.SpringBootRESTApp.domain.Book.UpdateBookValidation;
 
 @Service
 @Validated
@@ -32,7 +34,7 @@ public class BookService implements IBookService {
 
 	@Override
 	public List<Book> getListOfBooks() {
-		return bookRepository.findAll();
+		return bookRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 	}
 
 	@Override
@@ -47,4 +49,12 @@ public class BookService implements IBookService {
 		logger.info("Books Service Invoked for adding new book");
 		return bookRepository.save(book);
 	}
+
+	@Override
+	@Validated(UpdateBookValidation.class)
+	public Book updateBook(@Valid Book book) {
+		logger.info("Books Service Invoked for updating a book");
+		return bookRepository.save(book);
+	}
+
 }

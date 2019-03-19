@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.practice.springboot.basics.SpringBootRESTApp.domain.Book;
 import com.practice.springboot.basics.SpringBootRESTApp.domain.Book.ServiceValidation;
+import com.practice.springboot.basics.SpringBootRESTApp.domain.Book.UpdateBookValidation;
 
 @Service
 public interface IBookService {
@@ -21,5 +22,8 @@ public interface IBookService {
 
 	@Validated(ServiceValidation.class)
 	public Book addBook(@Valid Book book);
+
+	@Validated(UpdateBookValidation.class)
+	public Book updateBook(@Valid Book book);
 
 }
