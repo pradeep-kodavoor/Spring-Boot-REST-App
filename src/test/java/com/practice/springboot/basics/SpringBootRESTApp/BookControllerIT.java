@@ -26,7 +26,7 @@ public class BookControllerIT {
 
 	@Test
 	public void testGetBook() throws JSONException {
-		HttpEntity entity = new HttpEntity<>(null,headers);
+		HttpEntity<Object> entity = new HttpEntity<>(null, headers);
 		
 		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/book/1", HttpMethod.GET, entity,
 				String.class);

@@ -1,0 +1,8 @@
+2019-03-21 16:03:02,254 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringBootRestAppApplication on PC363420 with PID 20396 (D:\Users\734456\workspace\Spring-Boot-REST-App\target\classes started by 734456 in D:\Users\734456\workspace\Spring-Boot-REST-App)
+2019-03-21 16:03:02,256 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-03-21 16:03:10,306 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SpringBootRestAppApplication in 8.474 seconds (JVM running for 9.022)
+2019-03-21 16:03:34,979 INFO com.practice.springboot.basics.SpringBootRESTApp.controller.BookController [http-nio-8080-exec-1] Books Controller Invoked for getting a book for id: 12
+2019-03-21 16:03:35,036 WARN com.practice.springboot.basics.SpringBootRESTApp.controller.BookController [http-nio-8080-exec-1] Book not found in the Database
+2019-03-21 16:05:30,538 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringBootRestAppApplication on PC363420 with PID 20396 (D:\Users\734456\workspace\Spring-Boot-REST-App\target\classes started by 734456 in D:\Users\734456\workspace\Spring-Boot-REST-App)
+2019-03-21 16:05:30,540 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-03-21 16:05:32,128 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SpringBootRestAppApplication in 1.636 seconds (JVM running for 150.843)

@@ -27,18 +27,20 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<ErrorDetails> handleGenericException(Exception e, WebRequest request) {
-		System.out.println("!!!!!!!!!!!!Generic Excpetion Caught");
-		e.printStackTrace();
+		logger.error("Exception Occured!");
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), e.getMessage(),
 				request.getDescription(false));
+		logger.error(errorDetails.toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
 
 	@ExceptionHandler(BookNotFoundException.class)
 	public final ResponseEntity<ErrorDetails> handleBookNotFoundException(BookNotFoundException e, WebRequest request) {
-		System.out.println("!!!!!!!!!!!!BookNotFoundException Excpetion Caught");
+		logger.error("BookNotFoundException Occured!");
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), e.getMessage(),
 				request.getDescription(false));
+		logger.error(errorDetails.toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
@@ -46,8 +48,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-
-		System.out.println("!!!!!!!!!!!!Binding Result: " + ex.getBindingResult().getAllErrors().toString());
+		logger.error("MethodArgumentNotValidException Occured!");
 		List<String> errors = new ArrayList<>();
 		for (ObjectError error : ex.getBindingResult().getAllErrors()) {
 			errors.add(error.getDefaultMessage());
@@ -55,7 +56,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), "Bean validation failure",
 				ex.getBindingResult().getAllErrors().toString());
-
+		logger.error(errorDetails.toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 

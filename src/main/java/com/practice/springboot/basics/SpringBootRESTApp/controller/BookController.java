@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.practice.springboot.basics.SpringBootRESTApp.dao.IBookDao;
 import com.practice.springboot.basics.SpringBootRESTApp.domain.Book;
 import com.practice.springboot.basics.SpringBootRESTApp.service.IBookService;
 
@@ -33,14 +34,17 @@ public class BookController {
 	@Autowired
 	IBookService bookService;
 
+	@Autowired
+	IBookDao bookDao;
+
 	@GetMapping("/books")
 	public ResponseEntity<List<Book>> getBooks() {
 		logger.info("Books Controller Invoked for getting list of books");
-
 		List<Book> list = bookService.getListOfBooks();
 		if (list != null && list.size() != 0) {
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} else {
+			logger.warn("Books are not found in the database!");
 			return ResponseEntity.notFound().build();
 		}
 	}
@@ -57,7 +61,6 @@ public class BookController {
 			logger.warn("Book not found in the Database");
 			return ResponseEntity.notFound().build();
 		}
-
 	}
 
 	@GetMapping("/book")

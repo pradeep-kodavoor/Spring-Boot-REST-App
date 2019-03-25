@@ -10,6 +10,4 @@ public interface IBookDao {
 
 	public void saveBooks(List<Book> list);
 
-	public List<Book> getBooksList();
-
 }

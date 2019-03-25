@@ -31,9 +31,4 @@ public class BookDao implements IBookDao {
 		}
 	}
 
-	@Override
-	public List<Book> getBooksList() {
-		return null;
-	}
-
 }

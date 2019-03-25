@@ -42,4 +42,9 @@ public class ErrorDetails {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "ErrorDetails [timeStamp=" + timeStamp + ", message=" + message + ", description=" + description + "]";
+	}
+
 }
